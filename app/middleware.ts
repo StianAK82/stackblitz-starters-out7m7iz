@@ -1,23 +1,18 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
+// middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export async function middleware(req: NextRequest) {
+export function middleware(req: NextRequest) {
   const res = NextResponse.next();
-  const supabase = createMiddlewareClient({ req, res });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const session = req.cookies.get('sb-access-token');
 
-  // Protect all routes except auth routes
   if (!session && !req.nextUrl.pathname.startsWith('/auth')) {
     const redirectUrl = req.nextUrl.clone();
     redirectUrl.pathname = '/auth/login';
     return NextResponse.redirect(redirectUrl);
   }
 
-  // Redirect to home if logged in user tries to access auth pages
   if (session && req.nextUrl.pathname.startsWith('/auth')) {
     const redirectUrl = req.nextUrl.clone();
     redirectUrl.pathname = '/';
