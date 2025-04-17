@@ -11,7 +11,12 @@ export default async function TasksPage() {
   const { data, error } = await supabase
     .from('tasks')
     .select(`
-      *,
+      id,
+      customer_id,
+      type,
+      due_date,
+      status,
+      description,
       customers (
         name
       )
