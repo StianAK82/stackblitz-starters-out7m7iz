@@ -36,7 +36,7 @@ export default async function TasksPage() {
     id: task.id,
     customerId: task.customer_id,
     type: task.type,
-    dueDate: new Date(task.due_date),
+    dueDate: task.due_date,
     status: task.status,
     description: task.description,
     customers: task.customers,
