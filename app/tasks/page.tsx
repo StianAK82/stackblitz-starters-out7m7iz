@@ -5,6 +5,7 @@ import TaskList from '@/components/TaskList';
 import AddTaskButton from '@/components/AddTaskButton';
 import ImportButton from '@/components/ImportButton';
 
+import type { Task } from '@/lib/api/types';
 type Task = {
   id: string;
   title: string;
