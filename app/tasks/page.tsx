@@ -27,14 +27,14 @@ export default async function TasksPage() {
     return <p className="text-gray-600">Ingen oppgaver funnet.</p>;
   }
 
-  const tasks: Task[] = data.map((t: any) => ({
-    id: t.id,
-    customerId: t.customer_id,
-    type: t.type,
-    dueDate: new Date(t.due_date),
-    status: t.status,
-    description: t.description,
-    customers: t.customers,
+  const tasks: Task[] = data.map((task: any) => ({
+    id: task.id,
+    customerId: task.customer_id,
+    type: task.type,
+    dueDate: new Date(task.due_date),
+    status: task.status,
+    description: task.description,
+    customers: task.customers,
   }));
 
   return (
