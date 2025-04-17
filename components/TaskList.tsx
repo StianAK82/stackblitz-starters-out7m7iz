@@ -1,3 +1,4 @@
+// components/TaskList.tsx
 import { format } from 'date-fns';
 import { nb } from 'date-fns/locale';
 import { Task } from '@/lib/api/types';
@@ -18,7 +19,7 @@ export default function TaskList({ tasks }: TaskListProps) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <p className="text-sm font-medium text-blue-600 truncate">
-                    {task.title}
+                    {task.description}
                   </p>
                   <TaskStatusBadge status={task.status} className="ml-2" />
                 </div>
@@ -34,26 +35,10 @@ export default function TaskList({ tasks }: TaskListProps) {
               <div className="mt-2 sm:flex sm:justify-between">
                 <div className="sm:flex">
                   <p className="flex items-center text-sm text-gray-500">
-                    {task.customers?.name}
+                    {task.customers?.name ?? 'Ukjent kunde'}
                   </p>
                   <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
                     {task.type === 'vat' && 'MVA-oppgave'}
                     {task.type === 'salary' && 'Lønnskjøring'}
                     {task.type === 'yearend' && 'Årsregnskap'}
-                    {task.type === 'bookkeeping' && 'Bokføring'}
-                  </p>
-                </div>
-                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                  <p>
-                    Frist:{' '}
-                    {format(new Date(task.due_date), 'PPP', { locale: nb })}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+                    {task.type === 'bookkeeping' &&
