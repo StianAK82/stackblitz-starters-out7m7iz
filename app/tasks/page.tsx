@@ -6,19 +6,6 @@ import AddTaskButton from '@/components/AddTaskButton';
 import ImportButton from '@/components/ImportButton';
 
 import type { Task } from '@/lib/api/types';
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-  due_date: string;
-  status: string;
-  created_at?: string;
-  updated_at?: string;
-  customer_id?: string;
-  customers?: {
-    name: string;
-  };
-};
 
 export default async function TasksPage() {
   const supabase = createServerComponentClient({ cookies });
@@ -59,5 +46,6 @@ export default async function TasksPage() {
     </div>
   );
 }
+
 
   
