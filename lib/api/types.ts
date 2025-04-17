@@ -2,7 +2,7 @@ export interface Task {
   id: string;
   customerId: string;
   type: 'vat' | 'salary' | 'yearend' | 'bookkeeping';
-  dueDate: Date; // Viktig: Bruk Date, ikke string
+  dueDate: string;
   status: 'pending' | 'in_progress' | 'completed';
   description: string;
   customers?: {
