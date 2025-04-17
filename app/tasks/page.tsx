@@ -1,4 +1,3 @@
- // app/tasks/page.tsx
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import TaskList from '@/components/TaskList';
@@ -28,12 +27,11 @@ export default async function TasksPage() {
     return <p className="text-gray-600">Ingen oppgaver funnet.</p>;
   }
 
-  // 🔁 Transform snake_case -> camelCase
   const tasks: Task[] = data.map((t: any) => ({
     id: t.id,
     customerId: t.customer_id,
     type: t.type,
-    dueDate: t.due_date,
+    dueDate: new Date(t.due_date),
     status: t.status,
     description: t.description,
     customers: t.customers,
