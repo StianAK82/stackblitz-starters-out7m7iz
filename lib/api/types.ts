@@ -1,8 +1,8 @@
 export interface Task {
   id: string;
-  customer_id: string;
+  customerId: string;
   type: 'vat' | 'salary' | 'yearend' | 'bookkeeping';
-  due_date: string; // Supabase returnerer datoer som ISO-strenger
+  dueDate: Date; // Viktig: Bruk Date, ikke string
   status: 'pending' | 'in_progress' | 'completed';
   description: string;
   customers?: {
